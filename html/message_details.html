@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../lib/weui.min.css">
+		<link rel="stylesheet" href="../css/base.css">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_581338_rtkr8ohta66iggb9.css" />
+		<title>sass</title>
+		<style type="text/css">
+			html,
+			body {
+				background: #fff;
+			}
+			#wrap{
+				padding-bottom: 1.08rem;
+			}
+			ul{
+				overflow: hidden;
+			}
+			ul li{
+				position: relative;
+				margin: 0.3rem 0.2rem;
+				padding: 0.2rem;
+				background: #fafafa;
+				border-color: #FFFFFF;
+    			box-shadow: 0 0 2px #b2b2b2;
+    			color: #b2b6b6;
+			}
+			.time{
+				display: block;
+				position: relative;
+				left: -0.64rem;
+				top: 5px;
+				transform: scale(.8);
+    			color: #d6d6d6;
+			}
+			.del{
+				position: absolute;
+				top: -10px;
+				left: 50px;
+				width: 50px;
+				height: 30px;
+				text-align: center;
+				background: #000;
+				border-radius: 4px;
+				line-height: 30px;
+				display: none;
+			}
+			.del:after{
+				display: block;
+				content: '';
+				border-top: 8px solid #000;
+				border-right: 6px solid transparent;
+				border-left: 6px solid transparent;
+				width: 0;
+			    position: relative;
+			    left: 20px;
+			    top: -1px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="weui-tab__bd">
+				<input class="weui-input" >
+				<ul id="msg-box"></ul>
+			</div>
+			<div class="weui-tabbar">
+				<a href="messages.html" class="weui-tabbar__item weui-bar__item--on">
+					<span class="weui-badge msg-num" style="position: absolute;top: 5px;transform: translateX(20px);">8</span>
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-xiaoxi"></i>
+					</div>
+					<p class="weui-tabbar__label">消息</p>
+				</a>
+				<a href="approval.html" class="weui-tabbar__item">
+					<span class="weui-badge approval-num" style="position: absolute;top: 5px;transform: translateX(20px);">8</span>
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-shenpi"></i>
+					</div>
+					<p class="weui-tabbar__label">审批</p>
+				</a>
+				<a href="mine.html" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-wode"></i>
+					</div>
+					<p class="weui-tabbar__label">我的</p>
+				</a>
+			</div>
+		</div>
+		<script src="../lib/jquery-2.1.4.js"></script>
+		<script src="../js/jquery-weui.js"></script>
+		<script src="../js/base.js"></script>
+		<script type="text/javascript">
+			$.fn.longPress = function(fn) {
+			    var timeout = undefined;
+		        $(this).each(function(index){
+		        	var $this = $(this);
+		        	this.addEventListener('touchstart', function(event) {
+			            timeout = setTimeout(function(){
+			            	$this.find(".del").show();
+			            	$this.siblings().find(".del").hide();
+			            }, 800);
+		            }, false)
+		        });
+		        $(this).each(function(index){
+		        	this.addEventListener('touchend', function(event) {
+			            clearTimeout(timeout);
+		            }, false);
+		        });
+			};
+			$(document).ready(function(){
+				var parameter_obj = $.getParameter();
+				$.ajax({
+					url: "../js/test.json",
+					data: {"id": parameter_obj.id},
+					success: function(data){
+						var html = "";
+						data.company_news.map(function(company_msg){
+							html += `<li date-id=${company_msg.company_news_id}>
+										<p class="${company_msg.is_read ? '' : 'text-blue'}">${company_msg.content}</p>
+										<p><span class="time">${company_msg.datetime}</span></p>
+										<span class="del">删除</span>
+									</li>`.trim();
+						});
+						$("#msg-box").html(html);
+						$("#msg-box li").longPress();
+						if(data.message_num){
+							$(".msg-num").show().html(data.message_num);
+						}
+						if(data.approval_msg_num){
+							$(".approval-num").show().html(data.approval_msg_num);
+						}
+					}
+				});
+				$("#msg-box").on("click", ".del", function(){
+					$(this).parent().remove();
+				})
+				$(document).on("click", function(e){
+					$(".del").hide();
+				})
+			});
+			
+		</script>
+	</body>
+
+</html>

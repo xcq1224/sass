@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../lib/weui.min.css">
+		<link rel="stylesheet" href="../css/base.css">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_581338_rtkr8ohta66iggb9.css" />
+		<title>sass</title>
+		<style type="text/css">
+			#wrap{
+				overflow: hidden;
+				padding-bottom: 1.08rem;
+			}
+			.weui-custom{
+				font-size: 0.28rem;
+				margin: 0.2rem 0.1rem;
+				color: #999;
+			}
+			.weui-cell__hd{
+				margin: 0 0.1rem;
+				color: #bbb;
+			}
+			.weui-custom a.active .weui-cell__ft:after{
+				display: none;
+			}
+			.weui-cell_access .weui-cell__ft {
+			    padding-right: 0.26rem;
+			}
+			.weui-cell_access .weui-cell__ft:after {
+			    height: 0.12rem;
+			    width: 0.12rem;
+			    border-width: 0.04rem 0.04rem 0 0;
+			    margin-top: -0.08rem;
+			    right: 0.04rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="weui-cells weui-custom" id="company_list">
+	          
+	          
+	
+	        </div>
+	        <div class="weui-tabbar">
+				<a href="messages.html" class="weui-tabbar__item">
+					<span class="weui-badge msg-num" style="position: absolute;top: 0.1rem;transform: translateX(0.4rem);">8</span>
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-xiaoxi"></i>
+					</div>
+					<p class="weui-tabbar__label">消息</p>
+				</a>
+				<a href="approval.html" class="weui-tabbar__item">
+					<span class="weui-badge approval-num" style="position: absolute;top: 0.1rem;transform: translateX(0.4rem);">8</span>
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-shenpi"></i>
+					</div>
+					<p class="weui-tabbar__label">审批</p>
+				</a>
+				<a href="mine.html" class="weui-tabbar__item weui-bar__item--on">
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-wode"></i>
+					</div>
+					<p class="weui-tabbar__label">我的</p>
+				</a>
+			</div>
+		</div>
+		<script src="../lib/jquery-2.1.4.js"></script>
+		<script src="../js/jquery-weui.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$.ajax({
+					url: "../js/test7.json",
+					success: function(data){
+						var html = `<a class="weui-cell weui-cell_access active" href="javascript:;">
+						            <div class="weui-cell__bd">
+						              <p>${data.current_company}</p>
+						            </div>
+						            <div class="weui-cell__ft">当前企业</div>
+						          </a>`.trim();
+						data.company_list.map(function(company){
+							html += `<a class="weui-cell weui-cell_access" data-id="${company.company_id}">
+							            <div class="weui-cell__bd">
+							              <p>${company.company_name}</p>
+							            </div>
+							            <div class="weui-cell__ft text-blue">切换</div>
+							          </a>`.trim();
+						});
+						$("#company_list").html(html);
+						if(data.messages_num){
+							$(".msg-num").show().html(data.messages_num);
+						}
+						if(data.approval_msg_num){
+							$(".approval-num").show().html(data.approval_msg_num);
+						}
+					}
+				})
+			});
+		</script>
+	</body>
+</html>

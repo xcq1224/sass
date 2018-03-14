@@ -1,0 +1,22 @@
+{
+	"message_num": 6,
+	"approval_msg_num": 4,
+	"pending_num": 2,
+	"read_num": 4,
+	"approval_list": [{
+		"approval_type": 1,
+		"approval_name": "提资审核",
+		"applicant": "张三",
+		"logo": "../images/avatar.jpg",
+		"datetime": "2018-01-30 14:00:00",
+		"approval_id": 1
+	},{
+		"approval_type": 1,
+		"approval_name": "签批审核",
+		"applicant": "李四",
+		"logo": "../images/avatar.jpg",
+		"datetime": "2018-01-30 15:00:00",
+		"approval_id": 2
+	}]
+}
+

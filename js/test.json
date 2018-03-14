@@ -1,0 +1,41 @@
+{
+	"message_num": 8,
+	"company_news": [{
+		"content": "项目YYJ021711连铸坯断面尺寸改造，项目经理已经调整项目进度！",
+		"datetime": "2018-01-30 14:00:00",
+		"is_read": 0,
+		"company_news_id": 1
+	}, {
+		"content": "项目WHG141505武钢二热轧返卷运输线，项目经理已将XX图的计划发图时间，由XX日期调整为XX日期！",
+		"datetime": "2018-01-30 14:30:00",
+		"is_read": 0,
+		"company_news_id": 2
+	}, {
+		"content": "项目WHG141505武钢二热轧返卷运输线，策划了你所在专业需在XXX日期前完成提资，请按时组织提交资料！",
+		"datetime": "2018-01-30 15:30:00",
+		"is_read": 1,
+		"company_news_id": 3
+	}, {
+		"content": "项目WHG141505武钢二热轧返卷运输线，策划了你所在专业需在XXX日期前完成提资，请按时组织提交资料！",
+		"datetime": "2018-01-30 15:30:00",
+		"is_read": 1,
+		"company_news_id": 3
+	}, {
+		"content": "项目WHG141505武钢二热轧返卷运输线，策划了你所在专业需在XXX日期前完成提资，请按时组织提交资料！",
+		"datetime": "2018-01-30 15:30:00",
+		"is_read": 1,
+		"company_news_id": 3
+	}, {
+		"content": "项目WHG141505武钢二热轧返卷运输线，策划了你所在专业需在XXX日期前完成提资，请按时组织提交资料！",
+		"datetime": "2018-01-30 15:30:00",
+		"is_read": 1,
+		"company_news_id": 3
+	}, {
+		"content": "项目WHG141505武钢二热轧返卷运输线，策划了你所在专业需在XXX日期前完成提资，请按时组织提交资料！",
+		"datetime": "2018-01-30 15:30:00",
+		"is_read": 1,
+		"company_news_id": 3
+	}],
+	"approval_msg_num": 5
+}
+

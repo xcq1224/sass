@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../lib/weui.min.css">
+		<link rel="stylesheet" href="../css/base.css">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_581338_gqi748liyfz5b3xr.css" />
+		<title>消息</title>
+		<style type="text/css">
+			body {
+				background: #fafafa;
+			}
+			#wrap{
+				padding-bottom: 1.08rem;
+			}
+			.weui-cells{
+				background: transparent;
+			}
+			.weui-cells:after{
+				display: none;
+			}
+			.cell-custom{
+				border-bottom: 1px solid #dbd9d7;
+				padding: 0.2rem;
+				display: flex;
+				font-size: 0.28rem;
+				color: #101010;
+				background: #fff;
+			}
+			.cell-custom .weui-cell__bd{
+				display: flex;
+			    position: relative;
+			    overflow: hidden;
+			}
+			.messages-hd{
+				padding: 0.06rem 0.12rem 0;
+			}
+			.messages-hd img{
+				width: 1rem;
+				border-radius: 50%;
+			}
+			.messages-bd{
+				width: 100%;
+			}
+			.messages-bd p{
+				position: relative;
+				margin: 0.1rem;
+				color: #101010;
+			}
+			.messages-bd p:last-of-type{
+				margin-top: 5px;
+				margin-left: 2px;
+				color: #aba7ab;
+			}
+			.messages-bd .msgs-bd-left{
+				display: block;
+				width: 3.5rem;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			.messages-bd .time{
+				position: absolute;
+				right: -0.3rem;
+				top: 0;
+				white-space: nowrap;
+				transform: scale(.8);
+    			color: #d6d6d6;
+			}
+			.messages-bd .msg-title{
+				display: block;
+				width: 5rem;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			.empty{
+				text-align: center;
+				color: #CCCCCC;
+			}
+			.empty i{
+				font-size: 4rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="weui-tab__bd">
+				<div class="weui-cells" id="message_list"></div>
+			</div>
+			<div class="weui-tabbar">
+				<a href="messages.html" class="weui-tabbar__item weui-bar__item--on">
+					<span class="weui-badge msg-num" style="position: absolute;top: 0.1rem;transform: translateX(0.4rem);"></span>
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-xiaoxi"></i>
+					</div>
+					<p class="weui-tabbar__label">消息</p>
+				</a>
+				<a href="approval.html" class="weui-tabbar__item">
+					<span class="weui-badge approval-num" style="position: absolute;top: 0.1rem;transform: translateX(0.4rem);"></span>
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-shenpi"></i>
+					</div>
+					<p class="weui-tabbar__label">审批</p>
+				</a>
+				<a href="mine.html" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-wode"></i>
+					</div>
+					<p class="weui-tabbar__label">我的</p>
+				</a>
+			</div>
+		</div>
+		<script src="../lib/jquery-2.1.4.js"></script>
+		<script src="../js/jquery-weui.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$.ajax({
+					"url": "../js/test1.json",
+					success: function(data){
+						var html = "";
+						data.company_list.map(function(company_info){
+							html += `<div class="weui-cell cell-custom">
+					            	<a class="weui-cell__bd" href="message_details.html?id=${company_info.company_id}" style="transform: translate3d(0px, 0px, 0px);">
+					                <div class="messages-hd">
+										<img class="logo" src="${company_info.logo}" />
+									</div>
+									<div class="messages-bd">
+										<p>
+											<span class="msgs-bd-left">${company_info.company}</span>
+											<span class="time">${company_info.datetime}</span>
+										</p>
+										<p>
+											<span class="msg-title">${company_info.msg_title}</span>
+											<span class="weui-badge" style="position: absolute;right: 0;top: 0;">${company_info.msg_num}</span>
+										</p>
+									</div>
+					            </a>
+					          </div>`.trim();
+						});
+						if(!html){
+							html = `<p class="empty"><i class="iconfont icon-zanwushuju"></i></p>`;
+						}
+						$("#message_list").html(html);
+						if(data.message_num){
+							$(".msg-num").show().html(data.message_num);
+						}
+						if(data.approval_msg_num){
+							$(".approval-num").show().html(data.approval_msg_num);
+						}
+					}
+				})
+			});
+		</script>
+	</body>
+
+</html>

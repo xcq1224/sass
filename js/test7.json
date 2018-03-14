@@ -1,0 +1,15 @@
+{
+	"messages_num": 5,
+	"approval_msg_num": 8,
+	"current_company": "中冶南方信息公司",
+	"company_list": [{
+		"company_name": "中铁十一局设计院",
+		"company_id": 2
+	},{
+		"company_name": "中铁十一局设计",
+		"company_id": 3
+	},{
+		"company_name": "中铁十一局",
+		"company_id": 4
+	}]
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../lib/weui.min.css">
+		<link rel="stylesheet" href="../css/base.css">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_581338_cm1olajk2t65hfr.css" />
+		<title>消息</title>
+		<style type="text/css">
+			#wrap{
+				overflow: hidden;
+			}
+			.approval-hd{
+				display: flex;
+				border-bottom: 1px solid #bbb;
+				margin: 0.6rem 0.2rem 0.2rem;
+				font-size: 0.24rem;
+				color: #a8a2a8;
+			}
+			.approval-hd-hd img{
+				width: 0.8rem;
+				border-radius: 50%;
+				margin: 0 10px;
+			}
+			.approval-hd-bd{
+				flex: 1;
+			}
+			.approval-hd-ft{
+				width: 40px;
+				text-align: center;
+			}
+			.approval-hd-bd p{
+				position: relative;
+			}
+			.approval-hd-bd p i{
+				position: absolute;
+				right: 0.1rem;
+				top: -0.2rem;
+				font-size: 0.48rem;
+			    color: #552ef2;
+			}
+			.approval-hd-bd p .approval-status{
+				float: right;
+				margin-bottom: 5px;
+			}
+			.weui-cell{
+				font-size: 0.28rem;
+			}
+			.weui-label{
+				width: 2rem;
+			}
+			.weui-btn{
+				font-size: 0.36rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="approval-hd">
+				
+			</div>
+			<div class="weui-cells approval-bd"></div>
+		    <div class="weui-btn-area approval-ft"></div>
+		</div>
+		<script src="../lib/jquery-2.1.4.js"></script>
+		<script src="../js/jquery-weui.js"></script>
+		<script src="../js/base.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var parameter_obj = $.getParameter();
+				$.ajax({
+					"url": "../js/test4.json",
+					success: function(data){
+						var hd_html = `<div class="approval-hd-hd">
+								<img src="${data.logo}" />
+							</div>
+							<div class="approval-hd-bd">
+								<p>${data.applicant}<i class="iconfont icon-dengdaiqueren"></i></p>
+								<p>${data.datetime}<span class="approval-status">待处理</span></p>
+							</div>`;
+						var type0_html = `<div class="weui-cell">
+									        <div class="weui-cell__bd"><p>提资名称</p></div>
+									        <div class="weui-cell__ft">123</div>
+									      </div>
+									      <div class="weui-cell">
+									        <div class="weui-cell__bd"><p>提资内容</p></div>
+									        <div class="weui-cell__ft">123</div>
+									      </div>`.trim();
+						var type1_html = `<div class="weui-cell">
+									        <div class="weui-cell__bd"><p>工作包编号</p></div>
+									        <div class="weui-cell__ft">123</div>
+									      </div>
+									      <div class="weui-cell">
+									        <div class="weui-cell__bd"><p>工作包名称</p></div>
+									        <div class="weui-cell__ft">123</div>
+									      </div>
+									      <div class="weui-cell">
+									        <div class="weui-cell__bd"><p>累计发图次数</p></div>
+									        <div class="weui-cell__ft">123</div>
+									      </div>
+									      <div class="weui-cell">
+									        <div class="weui-cell__bd"><p>备注</p></div>
+									        <div class="weui-cell__ft">123</div>
+									      </div>`.trim();
+						var bd_html = `<div class="weui-cell">
+											        <div class="weui-cell__bd"><p>当前节点</p></div>
+											        <div class="weui-cell__ft">123</div>
+											      </div>
+											      <div class="weui-cell">
+											        <div class="weui-cell__bd"><p>项目编码</p></div>
+											        <div class="weui-cell__ft">123</div>
+											      </div>
+											      <div class="weui-cell">
+											        <div class="weui-cell__bd"><p>项目名称</p></div>
+											        <div class="weui-cell__ft">123</div>
+											      </div>
+											      ${data.approval_type == 0 ? type0_html : type1_html}`.trim();
+						var ft_html = `<a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">通过</a>
+							      	<a class="weui-btn weui-btn_warn" href="javascript:" id="showTooltips">不通过</a>
+								    `.trim();
+						$(".approval-hd").html(hd_html);
+						$(".approval-bd").html(bd_html);
+						$(".approval-ft").html(ft_html);
+					}
+				})
+			});
+		</script>
+	</body>
+
+</html>

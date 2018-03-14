@@ -1,0 +1,17 @@
+{
+	"approval_status": 0,
+	"approval_type": 0,
+	"applicant": "张三",
+	"logo": "../images/avatar.jpg",
+	"datetime": "2018-01-30 14:00:00",
+	"approval_id": 1,
+	"current_node": "",
+	"project_num": "",
+	"project_name": "",
+	"withdrawals_name": "",
+	"withdrawals_content": "",
+	"work_num": "",
+	"work_name": "",
+	"pictures_num": "",
+	"note": ""
+}

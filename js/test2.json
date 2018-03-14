@@ -1,0 +1,20 @@
+{
+	"message_num": 6,
+	"company_list": [{
+		"company": "中冶南方信息公司",
+		"company_id": 1,
+		"logo": "../images/avatar.jpg",
+		"datetime": "2018-01-30 14:00:00",
+		"msg_title": "[通知] 会签",
+		"msg_num": 1
+	},{
+		"company": "中铁十一局建筑院",
+		"company_id": 2,
+		"logo": "../images/avatar.jpg",
+		"datetime": "2018-01-30 14:30:00",
+		"msg_title": "[通知] 会签完成",
+		"msg_num": 3
+	}],
+	"approval_msg_num": 4
+}
+

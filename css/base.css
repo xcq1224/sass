@@ -1,0 +1,186 @@
+@media (max-width: 1442px) {
+  html {
+    font-size: 192px;
+  }
+}
+@media (max-width: 1282px) {
+  html {
+    font-size: 170.66666667px;
+  }
+}
+@media (max-width: 1026px) {
+  html {
+    font-size: 136.53333333px;
+  }
+}
+@media (max-width: 962px) {
+  html {
+    font-size: 128px;
+  }
+}
+@media (max-width: 952px) {
+  html {
+    font-size: 126.66666667px;
+  }
+}
+@media (max-width: 902px) {
+  html {
+    font-size: 120px;
+  }
+}
+@media (max-width: 802px) {
+  html {
+    font-size: 106.66666667px;
+  }
+}
+@media (max-width: 775px) {
+  html {
+    font-size: 103.06666667px;
+  }
+}
+@media (max-width: 770px) {
+  html {
+    font-size: 102.4px;
+  }
+}
+@media (max-width: 738px) {
+  html {
+    font-size: 98.13333333px;
+  }
+}
+@media (max-width: 734px) {
+  html {
+    font-size: 97.6px;
+  }
+}
+@media (max-width: 733px) {
+  html {
+    font-size: 97.46666667px;
+  }
+}
+@media (max-width: 669px) {
+  html {
+    font-size: 88.93333333px;
+  }
+}
+@media (max-width: 642px) {
+  html {
+    font-size: 85.33333333px;
+  }
+}
+@media (max-width: 602px) {
+  html {
+    font-size: 80px;
+  }
+}
+@media (max-width: 570px) {
+  html {
+    font-size: 75.73333333px;
+  }
+}
+@media (max-width: 535px) {
+  html {
+    font-size: 71.06666667px;
+  }
+}
+@media (max-width: 437px) {
+  html {
+    font-size: 58px;
+  }
+}
+@media (max-width: 416px) {
+  html {
+    font-size: 55.2px;
+  }
+}
+@media (max-width: 413px) {
+  html {
+    font-size: 54.8px;
+  }
+}
+@media (max-width: 386px) {
+  html {
+    font-size: 51.2px;
+  }
+}
+@media (max-width: 377px) {
+  html {
+    font-size: 50px;
+  }
+}
+@media (max-width: 362px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media (max-width: 322px) {
+  html {
+    font-size: 42.66666667px;
+  }
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+#wrap {
+  font-size: 0.28rem;
+  overflow: hidden;
+}
+.text-blue {
+  color: #5b6ed4 !important;
+}
+.weui-tabbar {
+  position: fixed;
+}
+.weui-badge {
+  font-size: 0.24rem;
+}
+.weui-tabbar__label {
+  font-size: 0.2rem;
+}
+.weui-tabbar__icon i {
+  font-size: 0.48rem;
+}
+.weui-tabbar__icon {
+  width: 0.54rem;
+  height: 0.54rem;
+}
+.weui-tabbar .weui-badge {
+  display: none;
+}
+.weui-btn {
+  font-size: 0.32rem;
+}
+.weui-cells {
+  margin-top: 0;
+}
+.weui_loading_toast {
+  font-size: 0.32rem;
+}
+.weui_loading_toast .weui-loading {
+  width: 0.76rem;
+  height: 0.76rem;
+  margin-top: 0.6rem;
+}
+.weui-dialog.weui-dialog--visible,
+.weui-toast.weui-dialog--visible,
+.weui-dialog.weui-toast--visible,
+.weui-toast.weui-toast--visible {
+  opacity: 1;
+  visibility: visible;
+}
+.weui-dialog,
+.weui-toast {
+  -webkit-transition-duration: .2s;
+  transition-duration: .2s;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  visibility: hidden;
+  margin: 0;
+  top: 45%;
+  z-index: 2000;
+}

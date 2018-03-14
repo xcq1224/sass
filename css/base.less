@@ -1,0 +1,99 @@
+.re(@width){
+    @xs : 100px/(750px/@width);
+    @media (max-width:(@width + 2px)){
+        html{
+            font-size:@xs;
+        }
+    }
+}
+
+.re(1440px);
+.re(1280px);
+.re(1024px);
+.re(960px);
+.re(950px);
+.re(900px);
+.re(800px);
+.re(773px);
+.re(768px);
+.re(736px);
+.re(732px);
+.re(731px);
+.re(667px);
+.re(640px);
+.re(600px);
+.re(568px);
+.re(533px);
+.re(435px);
+.re(414px);
+.re(411px);
+.re(384px);
+.re(375px);
+.re(360px);
+.re(320px);
+
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+#wrap{
+    font-size: 0.28rem;
+    overflow: hidden;
+}
+.text-blue{
+    color: #5b6ed4 !important;
+}
+.weui-tabbar{
+    position: fixed;
+}
+.weui-badge {
+    font-size: 0.24rem;
+}
+.weui-tabbar__label{
+    font-size: 0.2rem;
+}
+.weui-tabbar__icon i{
+    font-size: 0.48rem;
+}
+.weui-tabbar__icon{
+    width: 0.54rem;
+    height: 0.54rem;
+}
+.weui-tabbar .weui-badge{
+    display: none;
+}
+.weui-btn{
+    font-size: 0.32rem;
+}
+.weui-cells{
+    margin-top: 0;
+}
+
+// loading样式
+.weui_loading_toast{
+    font-size: 0.32rem;
+    .weui-loading{
+        width: 0.76rem;
+        height: 0.76rem;
+        margin-top: 0.6rem;
+    }
+}
+.weui-dialog.weui-dialog--visible, .weui-toast.weui-dialog--visible, .weui-dialog.weui-toast--visible, .weui-toast.weui-toast--visible {
+    opacity: 1;
+    visibility: visible;
+}
+.weui-dialog, .weui-toast {
+    -webkit-transition-duration: .2s;
+    transition-duration: .2s;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    visibility: hidden;
+    margin: 0;
+    top: 45%;
+    z-index: 2000;
+}
+            

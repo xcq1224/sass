@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../lib/weui.min.css">
+		<link rel="stylesheet" href="../css/base.css">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_581338_rtkr8ohta66iggb9.css" />
+		<title>消息</title>
+		<style type="text/css">
+			html,
+			body {
+				background: #fafafa;
+			}
+			#wrap{
+				padding-bottom: 1.08rem;
+			}
+			.navbar{
+				display: flex;
+				border-bottom: 1px solid #bbb;
+			}
+			.navbar a{
+				flex: 1;
+				text-align: center;
+				line-height: 1rem;
+			}
+			.navbar a .weui-badge{
+				display: none;
+			}
+			.navbar a.active{
+				color: #5b6ed4;
+				border-bottom: 1px solid #5b6ed4;
+			}
+			.weui-cells{
+				margin-top: 0;
+			}
+			.cell-custom{
+				border-bottom: 1px solid #dbd9d7;
+				display: flex;
+				font-size: 0.28rem;
+				color: #101010;
+			}
+			.cell-custom .weui-cell__bd{
+			    position: relative;
+			}
+			.check-approval{
+				display: flex;
+				padding: 0.2rem;
+			}
+			.messages-hd{
+				padding: 0.06rem 0.12rem 0;
+			}
+			.messages-hd img{
+				width: 1rem;
+				border-radius: 50%;
+			}
+			.messages-bd{
+				width: 100%;
+			}
+			.messages-bd p{
+				position: relative;
+				margin: 0.1rem;
+			}
+			.messages-bd p:last-of-type{
+				margin-top: 5px;
+				margin-left: 2px;
+				color: #aba7ab;
+			}
+			.messages-bd .msgs-bd-left{
+				display: block;
+				width: 3.5rem;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				color: #aba7ab;
+			}
+			.messages-bd .time{
+				position: absolute;
+				right: -0.3rem;
+				top: 0;
+				white-space: nowrap;
+				transform: scale(.8);
+    			color: #d6d6d6;
+			}
+			.messages-bd .msg-title{
+				display: block;
+				margin-right: 20px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			.deal-approval{
+				position: absolute;
+				top: 0.76rem;
+				right: 0.28rem;
+				color: #5b6ed4;
+			}
+			.weui-swiped-btn{
+			    padding: 28px 1em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="navbar">
+				<a class="active" data-status="0">
+					待处理的
+					<span class="weui-badge pending-num" style="position: relative;top: -2px;">3</span>
+				</a>
+				<a data-status="1">
+					待阅的
+					<span class="weui-badge read-num" style="position: relative;top: -2px;">3</span>
+				</a>
+				<a data-status="2">已处理的</a>
+				<a data-status="3">我发起的</a>
+			</div>
+			<div class="weui-cells" id="approval_list">
+	          
+	        </div>
+			<div class="weui-tabbar">
+				<a href="messages.html" class="weui-tabbar__item">
+					<span class="weui-badge msg-num" style="position: absolute;top: 5px;transform: translateX(20px);">8</span>
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-xiaoxi"></i>
+					</div>
+					<p class="weui-tabbar__label">消息</p>
+				</a>
+				<a href="approval.html" class="weui-tabbar__item weui-bar__item--on">
+					<span class="weui-badge approval-num" style="position: absolute;top: 5px;transform: translateX(20px);">8</span>
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-shenpi"></i>
+					</div>
+					<p class="weui-tabbar__label">审批</p>
+				</a>
+				<a href="mine.html" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<i class="iconfont icon-wode"></i>
+					</div>
+					<p class="weui-tabbar__label">我的</p>
+				</a>
+			</div>
+		</div>
+		<script src="../lib/jquery-2.1.4.js"></script>
+		<script src="../js/jquery-weui.js"></script>
+		<script src="../js/base.js"></script>
+		<script type="text/javascript">
+			function getApprovalList(id, approval_status){
+				$.ajax({
+					url: "../js/test3.json",
+					data: {"id": id, "approval_status": approval_status},
+					success: function(data){
+						var html = "";
+						data.approval_list.map(function(approval){
+							html += `<div class="weui-cell weui-cell_swiped cell-custom">
+							            <div class="weui-cell__bd" style="transform: translate3d(0px, 0px, 0px);">
+							                <a class="check-approval" href="approval_details.html?id=${approval.approval_id}">
+								                <div class="messages-hd">
+													<img src="${approval.logo}" />
+												</div>
+												<div class="messages-bd">
+													<p>
+														<span class="msgs-bd-left ${approval_status == 0 || approval_status == 1 ? 'text-blue': ''}">${approval.approval_name}</span>
+														<span class="time">${approval.datetime}</span>
+													</p>
+													<p>
+														<span class="msg-title">${approval.applicant}</span>
+													</p>
+												</div>
+											</a>
+											${approval_status == 0 ? '<a class="deal-approval">处理任务</a>' : ''}
+							            </div>
+							            <div class="weui-cell__ft">
+							              <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout" href="javascript:">删除</a>
+							            </div>
+						            </div>`.trim();
+						});
+						if(!html){
+							html = `<p class="empty"><i class="iconfont icon-zanwushuju"></i></p>`;
+						}
+						$("#approval_list").html(html);
+						if(data.pending_num){
+							$(".pending-num").css({"display": "inline-block"}).html(data.pending_num);
+						}
+						if(data.read_num){
+							$(".read-num").css({"display": "inline-block"}).html(data.read_num);
+						}
+						if(data.message_num){
+							$(".msg-num").show().html(data.message_num);
+						}
+						if(data.approval_msg_num){
+							$(".approval-num").show().html(data.approval_msg_num);
+						}
+					}
+				})
+			}
+			$(document).ready(function(){
+				var parameter_obj = $.getParameter();
+				var approval_status = 0;
+				getApprovalList(parameter_obj.id, approval_status);
+				$(".navbar").on("click", "a", function(){
+					$(this).addClass("active").siblings().removeClass("active");
+					approval_status = $(this).data("status");
+					getApprovalList(parameter_obj.id, approval_status);
+				})
+				
+			});
+		</script>
+	</body>
+
+</html>
